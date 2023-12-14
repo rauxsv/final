@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_market/domain/entities/userdata_entities.dart';
 import 'package:flutter_market/presentation/bloc/authen_bloc.dart';
 import 'package:flutter_market/presentation/bloc/authen_event.dart';
 import 'package:flutter_market/presentation/bloc/authen_state.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class RegisterPage extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
@@ -17,11 +18,14 @@ class RegisterPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Регистрация")),
+      appBar: AppBar(
+        title: Text(LocaleKeys.Registration.tr(), style: TextStyle(color: Colors.white)),
+        backgroundColor: Colors.black,
+      ),
       body: BlocListener<AuthenticationBloc, AuthenticationState>(
         listener: (context, state) {
           if (state is AuthenticationSuccess) {
-            Navigator.pushNamed(context, '/userPage');
+            Navigator.pushNamed(context, '/bottom');
           }
         },
         child: SingleChildScrollView(
@@ -29,94 +33,52 @@ class RegisterPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              TextField(
-                controller: nameController,
-                decoration: InputDecoration(
-                  labelText: 'ФИО',
-                  prefixIcon: Icon(Icons.person),
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 10),
-              TextField(
-                controller: ageController,
-                decoration: InputDecoration(
-                  labelText: 'Возраст',
-                  prefixIcon: Icon(Icons.calendar_today),
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 10),
-              TextField(
-                controller: countryController,
-                decoration: InputDecoration(
-                  labelText: 'Страна',
-                  prefixIcon: Icon(Icons.flag),
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 10),
-              TextField(
-                controller: genderController,
-                decoration: InputDecoration(
-                  labelText: 'Пол',
-                  prefixIcon: Icon(Icons.transgender),
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 10),
-              TextField(
-                controller: phoneController,
-                decoration: InputDecoration(
-                  labelText: 'Номер телефона',
-                  prefixIcon: Icon(Icons.phone),
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 10),
-              TextField(
-                controller: emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  prefixIcon: Icon(Icons.email),
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 10),
-              TextField(
-                controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: 'Пароль',
-                  prefixIcon: Icon(Icons.lock),
-                  border: OutlineInputBorder(),
-                ),
-              ),
-              SizedBox(height: 20),
               ElevatedButton(
-                onPressed: () async {
-                  final prefs = await SharedPreferences.getInstance();
-                  await prefs.setString('name', nameController.text);
-                  await prefs.setString('age', ageController.text);
-                  await prefs.setString('country', countryController.text);
-                  await prefs.setString('gender', genderController.text);
-                  await prefs.setString('phone', phoneController.text);
-
+                onPressed: () {
+                  AppUser user = AppUser(
+                    name: nameController.text,
+                    email: emailController.text,
+                    age: ageController.text,
+                    country: countryController.text,
+                    gender: genderController.text,
+                    phone: phoneController.text,
+                  );
                   BlocProvider.of<AuthenticationBloc>(context).add(
                     AuthenticationSignUpRequested(
-                      email: emailController.text,
+                      user: user,
                       password: passwordController.text,
                     ),
                   );
                 },
-                child: Text('Зарегистрироваться'),
+                child: Text(LocaleKeys.Register.tr()),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
+                  primary: Colors.blue,
+                  onPrimary: Colors.white,
                   padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 ),
               ),
             ],
           ),
+        ),
+      ),
+      backgroundColor: Colors.black,
+    );
+  }
+
+
+  Widget _buildTextField(TextEditingController controller, IconData icon, String labelText) {
+    return TextField(
+      controller: controller,
+      style: TextStyle(color: Colors.white),
+      decoration: InputDecoration(
+        labelText: labelText,
+        labelStyle: TextStyle(color: Colors.white),
+        prefixIcon: Icon(icon, color: Colors.white),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.blue),
         ),
       ),
     );

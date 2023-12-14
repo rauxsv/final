@@ -1,4 +1,12 @@
+import 'package:flutter_market/domain/entities/userdata_entities.dart';
+
 abstract class AuthenticationState {}
+
+class AuthenticationUserDataLoaded extends AuthenticationState {
+  final AppUser user;
+
+  AuthenticationUserDataLoaded({required this.user});
+}
 
 class AuthenticationInitial extends AuthenticationState {}
 

@@ -14,27 +14,33 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   _navigateToHome() async {
-    await Future.delayed(Duration(milliseconds: 5000), () {});
-    
+    await Future.delayed(Duration(milliseconds: 3000), () {});
     Navigator.pushReplacementNamed(context, '/loginPage');
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.red, 
+      backgroundColor: LinearGradient(
+        begin: Alignment.topRight,
+        end: Alignment.bottomLeft,
+        colors: [Colors.blue, Colors.purple],
+      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Lottie.asset('assets/lottie/splash.json'),
-            SizedBox(height: 20), 
+            Lottie.asset('assets/lottie/finance.json', speed: 0.5),
+            SizedBox(height: 20),
             Text(
-              'Araba', 
+              'Araba',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                foreground: Paint()
+                  ..shader = LinearGradient(
+                    colors: <Color>[Colors.yellow, Colors.red],
+                  ).createShader(Rect.fromLTWH(0.0, 0.0, 200.0, 70.0)),
               ),
             ),
           ],

@@ -44,37 +44,41 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDu8GS_YxgCRGY4h2A8pkvR_WHmK6A-61s',
-    appId: '1:63456349150:web:2e55dc3061d5892d136b4f',
-    messagingSenderId: '63456349150',
-    projectId: 'market-d068c',
-    authDomain: 'market-d068c.firebaseapp.com',
-    storageBucket: 'market-d068c.appspot.com',
+    apiKey: 'AIzaSyCrMMkdm6w1iTY4Xh0J56SFWTyZeK49bzU',
+    appId: '1:200698208242:web:5e63f4b757a002432c156b',
+    messagingSenderId: '200698208242',
+    projectId: 'finance-372ed',
+    authDomain: 'finance-372ed.firebaseapp.com',
+    databaseURL: 'https://finance-372ed-default-rtdb.firebaseio.com',
+    storageBucket: 'finance-372ed.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDAPF6tjbl0NKFWJQN3KqXA5UKGUZAA4Ec',
-    appId: '1:63456349150:android:9fce695aa94b6fb6136b4f',
-    messagingSenderId: '63456349150',
-    projectId: 'market-d068c',
-    storageBucket: 'market-d068c.appspot.com',
+    apiKey: 'AIzaSyAhp1UMa1QYxJZ9HQQrhxOFOE05lqy4uI4',
+    appId: '1:200698208242:android:86437c3013bd8bb32c156b',
+    messagingSenderId: '200698208242',
+    projectId: 'finance-372ed',
+    databaseURL: 'https://finance-372ed-default-rtdb.firebaseio.com',
+    storageBucket: 'finance-372ed.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyACTgbfypeLGJhf6F6R3rjeS2xZ5bhy0xY',
-    appId: '1:63456349150:ios:48847761ac42b7b4136b4f',
-    messagingSenderId: '63456349150',
-    projectId: 'market-d068c',
-    storageBucket: 'market-d068c.appspot.com',
+    apiKey: 'AIzaSyACxyrU8vTmhCaENh1P7gsL-Vs5GR07Q8Q',
+    appId: '1:200698208242:ios:57cc6d8f6729e8b42c156b',
+    messagingSenderId: '200698208242',
+    projectId: 'finance-372ed',
+    databaseURL: 'https://finance-372ed-default-rtdb.firebaseio.com',
+    storageBucket: 'finance-372ed.appspot.com',
     iosBundleId: 'com.example.flutterMarket',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyACTgbfypeLGJhf6F6R3rjeS2xZ5bhy0xY',
-    appId: '1:63456349150:ios:8dd554d36dfa9abb136b4f',
-    messagingSenderId: '63456349150',
-    projectId: 'market-d068c',
-    storageBucket: 'market-d068c.appspot.com',
+    apiKey: 'AIzaSyACxyrU8vTmhCaENh1P7gsL-Vs5GR07Q8Q',
+    appId: '1:200698208242:ios:cf0210597b97a04d2c156b',
+    messagingSenderId: '200698208242',
+    projectId: 'finance-372ed',
+    databaseURL: 'https://finance-372ed-default-rtdb.firebaseio.com',
+    storageBucket: 'finance-372ed.appspot.com',
     iosBundleId: 'com.example.flutterMarket.RunnerTests',
   );
 }

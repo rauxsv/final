@@ -1,3 +1,5 @@
+import 'package:flutter_market/domain/entities/userdata_entities.dart';
+
 abstract class AuthenticationEvent {}
 
 class AuthenticationStarted extends AuthenticationEvent {}
@@ -9,11 +11,13 @@ class AuthenticationLoginRequested extends AuthenticationEvent {
   AuthenticationLoginRequested({required this.email, required this.password});
 }
 
+class AuthenticationUserRequested extends AuthenticationEvent {}
+
 class AuthenticationSignUpRequested extends AuthenticationEvent {
-  final String email;
+  final AppUser user;
   final String password;
 
-  AuthenticationSignUpRequested({required this.email, required this.password});
+  AuthenticationSignUpRequested({required this.user, required this.password});
 }
 
 class AuthenticationLoggedOut extends AuthenticationEvent {}
